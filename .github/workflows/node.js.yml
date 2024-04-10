@@ -26,4 +26,4 @@ jobs:
         run: echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io -u ${{github.actor}} --password-stdin
       - name: Push image
         if: ${{ github.event_name != 'pull_request'}}
-        run: mvn package -Dquarkus.container-image.push
+        run: docker push ghcr.io/${{github.repository}}:latest
